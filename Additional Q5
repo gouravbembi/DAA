@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool canFit(long long S, long long N, long long height, long long width){
+    long long cols = S / width;
+    long long rows = S / height;
+    if(cols == 0 || rows == 0) return false;
+
+    long long total =  cols*rows; 
+    return total >= N;
+}
+
+long long bs(long long N,long long height, long long width){
+    long long low = 0;
+    long long high = max(height,width)*N;
+
+    while(low<=high){
+        long long mid = low + (high-low)/2;
+
+        if(canFit(mid, N, height, width)){
+            high = mid - 1;
+        }
+        else{
+            low = mid + 1;
+        }
+    }
+    return low;  
+}
+
+int main(){
+    long long N,height,width;
+    cout<<"Enter number of rectangles,height,width to fit in"<<endl;
+    cin>>N>>height>>width;
+    cout<<endl;
+
+    long long ans = bs(N,height,width);
+    cout<<ans;
+}
