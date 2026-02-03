@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+vector<int> arr = {1,9,14,2,17,14,5,18};
+// 1,2,3,9,14,14,17,18;
+int n = arr.size();
+sort(arr.begin(),arr.end());
+int len =0;
+int l =0,r=0;
+while(r<n){
+int diff = abs(arr[r]-arr[l]);
+while(diff>10){
+l++;
+}
+len = r-l+1;
+r++;
+}
+cout<<len;
+
+return 0;
+}
