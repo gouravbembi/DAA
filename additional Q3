@@ -1,0 +1,13 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int func(vector<int>&arr,int n){
+    sort(arr.begin(),arr.end());
+    return arr[0]+arr[n-1];
+}
+
+int main(){
+    vector<int> arr = {1,2,3,5};
+    int ans = func(arr,arr.size()); 
+    cout<<ans;
+}
